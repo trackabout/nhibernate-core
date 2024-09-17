@@ -686,7 +686,7 @@ namespace NHibernate.Impl
 			cancellationToken.ThrowIfCancellationRequested();
 			using (BeginProcess())
 			{
-				if (!ConnectionManager.IsInActiveTransaction)
+				if (IsClosed)
 				{
 					// do not auto-flush while outside a transaction
 					return false;
